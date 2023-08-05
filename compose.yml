@@ -1,0 +1,48 @@
+services:
+  php:
+    build: ./app
+    tty: true
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      TZ: Asia/Tokyo
+    command: "sh -c 'bash /var/www/html/bin/init.sh && apache2-foreground'"
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+      - mysql-for-test
+
+  mysql:
+    build: ./database
+    platform: linux/amd64
+    ports:
+      - "30060:3306"
+    volumes:
+      - ./database/mysql/mysql.conf:/etc/mysql/mysql.conf
+      - ./database/mysql/lib:/var/lib/mysql
+      - ./database/mysql/logs:/var/log/database
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: main
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+      LC_ALL: "C.UTF-8"
+
+  mysql-for-test:
+    build: ./databaseForTest
+    platform: linux/amd64
+    volumes:
+      - ./databaseForTest/mysql/mysql.conf:/etc/mysql/mysql.conf
+      - ./databaseForTest/mysql/lib:/var/lib/mysql
+      - ./databaseForTest/mysql/logs:/var/log/database
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: main
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+      LC_ALL: "C.UTF-8"
