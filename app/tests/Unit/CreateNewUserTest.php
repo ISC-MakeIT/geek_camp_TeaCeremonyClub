@@ -1,8 +1,6 @@
 <?php
 
-namespace Tests\Feature;
-
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+namespace Tests\Unit;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
@@ -39,6 +37,32 @@ class CreateNewUserTest extends TestCase
     public function test_ユーザー作成時にバリデーションに失敗した場合エラーが発生すること(): void
     {
         $createNewUser = new CreateNewUser();
+
+        try {
+            $createNewUser->create([
+                'name'                  => '',
+                'email'                 => '',
+                'password'              => '',
+                'password_confirmation' => '',
+            ]);
+        } catch (ValidationException $e) {
+            $this->assertArrayHasKey('name', $e->errors());
+            $this->assertArrayHasKey('email', $e->errors());
+            $this->assertArrayHasKey('password', $e->errors());
+        }
+
+        try {
+            $createNewUser->create([
+                'name'                  => 1,
+                'email'                 => 1,
+                'password'              => 1,
+                'password_confirmation' => 1,
+            ]);
+        } catch (ValidationException $e) {
+            $this->assertArrayHasKey('name', $e->errors());
+            $this->assertArrayHasKey('email', $e->errors());
+            $this->assertArrayHasKey('password', $e->errors());
+        }
 
         try {
             $createNewUser->create([
