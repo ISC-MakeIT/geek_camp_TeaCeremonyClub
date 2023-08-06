@@ -7,6 +7,7 @@ namespace Tests\Feature;
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
@@ -18,11 +19,13 @@ class CreateNewUserTest extends TestCase
     {
         $createNewUser = new CreateNewUser();
 
+        $password = '12345678';
+
         $createdUser = $createNewUser->create([
             'name'                  => 'test',
             'email'                 => 'test@a.aa',
-            'password'              => '12345678',
-            'password_confirmation' => '12345678',
+            'password'              => $password,
+            'password_confirmation' => $password,
         ]);
 
         $foundUser = User::find($createdUser->getId());
@@ -30,6 +33,7 @@ class CreateNewUserTest extends TestCase
         $this->assertEquals($createdUser->getId(), $foundUser->getId());
         $this->assertEquals($createdUser->getName(), $foundUser->getName());
         $this->assertEquals($createdUser->getEmail(), $foundUser->getEmail());
+        $this->assertTrue(Hash::check($password, $createdUser->getHashedPassword()));
     }
 
     public function test_ユーザー作成時にバリデーションに失敗した場合エラーが発生すること(): void
