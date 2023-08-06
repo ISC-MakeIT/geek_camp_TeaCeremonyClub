@@ -10,18 +10,20 @@
 </head>
 
 <body>
-    @if ($errors->any())
-        <ul class="alert">
-            @foreach ($errors->all() as $error)
-                <div class="alert" role="alert">
-                    <li> {{ $error }}</li>
-                </div>
-            @endforeach
-        </ul>
-    @endif
-    <div class="registration">
-        @yield('registration')
-    </div>
+    <main class="main">
+        @if ($errors->any())
+            <ul class="alert">
+                @foreach ($errors->all() as $error)
+                    <div class="alert" role="alert">
+                        <li> {{ $error }}</li>
+                    </div>
+                @endforeach
+            </ul>
+        @endif
+        <div class="registration">
+            @yield('registration')
+        </div>
+    </main>
 </body>
 
 </html>
