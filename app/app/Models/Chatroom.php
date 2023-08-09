@@ -15,9 +15,9 @@ class Chatroom extends Model
 
     public $fillable = [
         'id',
-        'charactor_id',
+        'character_id',
         'purpose',
-        'charactor_elements',
+        'character_elements',
         'creator',
     ];
 
@@ -26,9 +26,9 @@ class Chatroom extends Model
         return $this->id;
     }
 
-    public function getCharactorId(): string
+    public function getCharacterId(): string
     {
-        return $this->charactor_id;
+        return $this->character_id;
     }
 
     public function getPurpose(): string
@@ -36,9 +36,9 @@ class Chatroom extends Model
         return $this->purpose;
     }
 
-    public function getCharactorElements(): array
+    public function getCharacterElements(): array
     {
-        return $this->charactor_elements;
+        return $this->character_elements;
     }
 
     public function getCreator(): int
