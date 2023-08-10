@@ -11,11 +11,8 @@ class CreateCharacterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if ($this->path() == 'createCharacter') {
-            return true;
-        } else {
-            return false;
-        }
+        if (!$this->path() == 'createCharacter') return false;
+        return true;
     }
 
     /**
@@ -26,15 +23,20 @@ class CreateCharacterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'max:30 | required',
-            'age' => 'integer | required',
-            'sex' => 'required',
-            'icon' => 'required',
-            'extraversion' => 'integer | required',
-            'agreeableness' => 'integer | required',
-            'conscientiousness' => 'integer | required',
-            'neuroticism' => 'integer | required',
-            'openness' => 'integer | required',
+            'name' => 'required | string | min:1 | max:100',
+            'age' => 'required | integer',
+            'sex' => 'required | string | min:1 | max:3',
+            'icon' => [
+                'required',
+                'file',
+                'image',
+                'mimetypes:image/jpeg,image/png'
+            ],
+            'extraversion' => 'required | integer',
+            'agreeableness' => 'required | integer',
+            'conscientiousness' => 'required | integer',
+            'neuroticism' => 'required | integer',
+            'openness' => 'required | integer',
         ];
     }
 
@@ -42,7 +44,7 @@ class CreateCharacterRequest extends FormRequest
     {
         return [
             'name.required' => '名前を入力してください',
-            'name.between' => '30文字まで入力可能です',
+            'name.between' => '100文字まで入力可能です',
             'age.numeric' => '整数で入力してください',
             'age.between' => '0～150で入力してください',
             'age.required' => '年齢を入力してください',
