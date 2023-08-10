@@ -24,7 +24,7 @@ class Character extends Model
         'neuroticism',
         'openness',
         'creator',
-        'updator'
+        'updater'
     ];
 
     public function getId(): string
@@ -79,7 +79,7 @@ class Character extends Model
 
     public function getUpdator(): int
     {
-        return $this->updator;
+        return $this->updater;
     }
 
     public function getCreatedAt(): CarbonImmutable
