@@ -8,6 +8,6 @@ class CreateCharacterController extends Controller
 {
     public function createCharacterValidates(CreateCharacterRequest $request)
     {
-        return redirect()->route("createCharacter", ['msg' => 'OK']);
+        return redirect()->route("createCharacter", ['message' => 'OK']);
     }
 }
