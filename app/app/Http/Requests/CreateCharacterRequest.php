@@ -24,7 +24,7 @@ class CreateCharacterRequest extends FormRequest
     {
         return [
             'name' => 'required | string | min:1 | max:100',
-            'age' => 'required | integer',
+            'age' => 'required | integer | max:0 | max:120',
             'sex' => 'required | string | min:1 | max:3',
             'icon' => [
                 'required',
