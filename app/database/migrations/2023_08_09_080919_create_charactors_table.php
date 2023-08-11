@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('neuroticism');
             $table->integer('openness');
             $table->foreignId('creator');
-            $table->foreignId('updator');
+            $table->foreignId('updater');
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('charactors');
+        Schema::dropIfExists('characters');
     }
 };

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('chatrooms', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->uuid('charactor_id');
+            $table->uuid('character_id');
             $table->string('purpose', 255);
-            $table->json('charactor_elements');
+            $table->json('character_elements');
             $table->foreignId('creator');
 
             $table->timestamp('created_at')->useCurrent();

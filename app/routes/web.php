@@ -19,5 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/createCharacter', [HomeController::class, 'index'])->name('createCharacter');
 });
+
+Route::post('/createCharacter', 'CreateCharacterController@createCharacterValidates');
