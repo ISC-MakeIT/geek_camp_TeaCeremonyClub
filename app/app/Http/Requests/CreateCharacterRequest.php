@@ -11,8 +11,7 @@ class CreateCharacterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (!$this->path() == 'createCharacter') return false;
-        return true;
+        return $this->path() == 'createCharacter';
     }
 
     /**
@@ -23,20 +22,15 @@ class CreateCharacterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required | string | min:1 | max:100',
-            'age' => 'required | integer | max:0 | max:120',
-            'sex' => 'required | string | min:1 | max:3',
-            'icon' => [
-                'required',
-                'file',
-                'image',
-                'mimetypes:image/jpeg,image/png'
-            ],
-            'extraversion' => 'required | integer',
-            'agreeableness' => 'required | integer',
-            'conscientiousness' => 'required | integer',
-            'neuroticism' => 'required | integer',
-            'openness' => 'required | integer',
+            'name' => ['required', 'string', 'min:1', 'max:100'],
+            'age' => ['required', 'integer', 'max:0', 'max:120'],
+            'sex' => ['required ', 'string', 'min:1', 'max:3'],
+            'icon' => ['required', 'file', 'image', 'mimetypes:image/jpeg,image/png'],
+            'extraversion' => ['required ', 'integer'],
+            'agreeableness' => ['required', 'integer'],
+            'conscientiousness' => ['required', 'integer'],
+            'neuroticism' => ['required', 'integer'],
+            'openness' => ['required', 'integer'],
         ];
     }
 
