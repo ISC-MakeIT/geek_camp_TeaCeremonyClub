@@ -98,5 +98,10 @@ class CreateCharacterTest extends TestCase
 
         $response->assertStatus(302);
         $response->assertRedirect('/');
+
+        /** @var Character */
+        $foundCharacter = Character::where('name', 'test')->first();
+
+        $this->assertNull($foundCharacter);
     }
 }
