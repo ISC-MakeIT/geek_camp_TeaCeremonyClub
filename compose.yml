@@ -6,9 +6,10 @@ services:
       - ./app:/var/www/html
     environment:
       TZ: Asia/Tokyo
-    command: "sh -c 'bash /var/www/html/bin/init.sh && apache2-foreground'"
+    command: "sh -c 'bash /var/www/html/bin/init.sh && /var/www/html/bin/run.sh'"
     ports:
       - "8000:80"
+      - "5173:5173"
     depends_on:
       - mysql
       - mysql-for-test
