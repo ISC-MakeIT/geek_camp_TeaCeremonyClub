@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Character;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function showHome(): View | Factory
     {
-        return view('home');
+        $characters = Character::findAllByUserId(auth()->id());
+
+        return view('home', ['characters' => $characters]);
     }
 }

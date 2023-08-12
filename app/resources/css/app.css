@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+}
+
+.main {
+}
+
+ul.alert {
+    margin: 10px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding: 1rem 1rem 1rem 2.5rem;
+    border-radius: 4px;
+    background: #f8d6d9;
+    color: #721c24;
+    box-shadow: 10px 5px 5px #278d54;
+}
+
+.registration {
+    border-radius: 10px;
+    background: white;
+    width: 100%;
+}
+
+.registration_title {
+    margin-top: 50px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.registration_form {
+    display: flex;
+    justify-content: center;
+}
+
+.input_group {
+    margin-bottom: 1.5rem;
+}
+
+.input_group_label {
+    font-size: .8rem;
+}
+
+
+.registration_box {
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-bottom: .5rem;
+    box-sizing: border-box;
+}
+
+.underline {
+    position: relative;
+    border-top: 1px solid #c2c2c2;
+}
+
+.underline::before,
+.underline::after {
+    position: absolute;
+    bottom: 0px;
+    width: 0px;
+    height: 1px;
+    content: '';
+    background-color: #2fb070;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.underline::before {
+    left: 50%;
+}
+
+.underline::after {
+    right: 50%;
+}
+
+#registration_email:focus+.underline::before,
+#registration_email:focus+.underline::after {
+    width: 50%;
+}
+
+#registration_password:focus+.underline::before,
+#registration_password:focus+.underline::after {
+    width: 50%;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.login_btn,
+.registration_btn {
+    width: 140px;
+    background: #2fb070;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.login_btn:hover,
+.registration_btn:hover {
+    cursor: pointer;
+    background: #248b58;
+}
+
+a {
+    text-decoration: underline;
+}

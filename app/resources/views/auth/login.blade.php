@@ -1,5 +1,18 @@
-@extends('layouts.auth')
-@section('registration')
+@extends('layouts.base')
+
+@section('title', 'ログイン')
+
+@section('main')
+    @if ($errors->any())
+    <ul class="alert">
+        @foreach ($errors->all() as $error)
+            <div class="alert" role="alert">
+                <li> {{ $error }}</li>
+            </div>
+        @endforeach
+    </ul>
+    @endif
+
     <h1 class="registration_title">ログイン</h1>
     <form class="registration_form" action="{{ route('login') }}" method="post">
         @csrf

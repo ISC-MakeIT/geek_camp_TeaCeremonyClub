@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\Authenticate;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware(Authenticate::class)->group(function() {
+    Route::get('/', [HomeController::class, 'showHome']);
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/createCharacter', [HomeController::class, 'index'])->name('createCharacter');
+    Route::prefix('/character')->group(function() {
+        Route::post('/', [CharacterController::class, 'createCharacter']);
+    });
 });
-
-Route::post('/createCharacter', 'CreateCharacterController@createCharacterValidates');
