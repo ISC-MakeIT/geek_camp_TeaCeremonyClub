@@ -92,7 +92,6 @@ class Character extends Model
             'public'
         );
 
-        // dd($uploadedIconPath);
         if (!$uploadedIconPath) {
             throw new FailedUploadFileException();
         }

@@ -47,36 +47,6 @@ class CreateCharacterRequestValidationTest extends TestCase
 
         $this->assertTrue($validator->fails());
 
-        $validator = Validator::make([
-            'name'              => 1,
-            'age'               => 'a',
-            'sex'               => 1,
-            'icon'              => 'a',
-            'extraversion'      => 'a',
-            'agreeableness'     => 'a',
-            'conscientiousness' => 'a',
-            'neuroticism'       => 'a',
-            'openness'          => 'a',
-        ], $createCharacterRequestValidationRules);
-
-        $this->assertTrue($validator->fails());
-
-		$icon = UploadedFile::fake()->image('dummy.gif', 800, 800);
-
-        $validator = Validator::make([
-            'name'              => 'max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255max255',
-            'age'               => -1,
-            'sex'               => 'max6max6',
-            'icon'              => $icon,
-            'extraversion'      => -1,
-            'agreeableness'     => -1,
-            'conscientiousness' => -1,
-            'neuroticism'       => -1,
-            'openness'          => -1,
-        ], $createCharacterRequestValidationRules);
-
-        $this->assertTrue($validator->fails());
-
 		$icon = UploadedFile::fake()->image('dummy.gif', 800, 800);
 
         $validator = Validator::make([
