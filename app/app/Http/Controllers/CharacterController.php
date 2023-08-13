@@ -26,4 +26,10 @@ class CharacterController extends Controller
 
         return redirect('/');
     }
+
+    public function getCharacterPath(Character $character)
+    {
+        $data = ['character' => $character];
+        return view('character', $data);
+    }
 }
