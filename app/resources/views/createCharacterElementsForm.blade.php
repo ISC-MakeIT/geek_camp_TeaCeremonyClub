@@ -9,7 +9,7 @@
 
     <section>
         <article style="border: 1px solid black;">
-            <form style="margin-top: 20px" action="{{ url("/chatroom/{$character->getId()}") }}" method="post">
+            <form style="margin-top: 20px" action="{{ url("/chatroom/create/{$character->getId()}") }}" method="get">
                 @csrf
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

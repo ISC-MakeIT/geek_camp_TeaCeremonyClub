@@ -13,7 +13,7 @@
 
     <section>
         @foreach ($characters as $character)
-            <a href="{{ url("/chatroom/{$character->getId()}") }}">
+            <a href="{{ url("/chatroom/characterElements/{$character->getId()}") }}">
                 <article style="border: 1px solid black;">
                     <img src="{{ $character->getIcon() }}" alt="{{ $character->getName() }}さんのアイコン">
                     <h1>{{ $character->getName() }}{{ $character->getAge() }}歳 ({{ $character->getSexInJa() }})</h1>
