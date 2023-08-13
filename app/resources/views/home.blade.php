@@ -13,9 +13,21 @@
 
     <section>
         @foreach ($characters as $character)
+            <a href="{{ url("/chatroom/{$character->getId()}") }}">
+                <article style="border: 1px solid black;">
+                    <img src="{{ $character->getIcon() }}" alt="{{ $character->getName() }}さんのアイコン">
+                    <h1>{{ $character->getName() }}{{ $character->getAge() }}歳 ({{ $character->getSexInJa() }})</h1>
+                </article>
+            </a>
+        @endforeach
+    </section>
+
+    <section>
+        @foreach ($chatrooms as $chatroom)
             <article style="border: 1px solid black;">
-                <img src="{{ $character->getIcon() }}" alt="{{ $character->getName() }}さんのアイコン">
-                <h1>{{ $character->getName() }}{{ $character->getAge() }}歳 ({{ $character->getSexInJa() }})</h1>
+                <h1>{{ $chatroom->getId() }}</h1>
+                <p>{{ $chatroom->getPurpose() }}</p>
+                <p>({{ json_encode($chatroom->getCharacterElements(), JSON_UNESCAPED_UNICODE) }})</p>
             </article>
         @endforeach
     </section>
@@ -27,7 +39,7 @@
             @csrf
 
             @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
 
             <div>
@@ -57,22 +69,26 @@
 
             <div>
                 <label for="extraversion">外向性</label><br>
-                <input name="extraversion" id="extraversion" type="range" min="0" max="100" value="50" required>
+                <input name="extraversion" id="extraversion" type="range" min="0" max="100" value="50"
+                    required>
             </div>
 
             <div>
                 <label for="agreeableness">協調性</label><br>
-                <input name="agreeableness" id="agreeableness" type="range" min="0" max="100" value="50" required>
+                <input name="agreeableness" id="agreeableness" type="range" min="0" max="100" value="50"
+                    required>
             </div>
 
             <div>
                 <label for="conscientiousness">誠実性</label><br>
-                <input name="conscientiousness" id="conscientiousness" type="range" min="0" max="100" value="50" required>
+                <input name="conscientiousness" id="conscientiousness" type="range" min="0" max="100"
+                    value="50" required>
             </div>
 
             <div>
                 <label for="neuroticism">情緒安定性</label><br>
-                <input name="neuroticism" id="neuroticism" type="range" min="0" max="100" value="50" required>
+                <input name="neuroticism" id="neuroticism" type="range" min="0" max="100" value="50"
+                    required>
             </div>
 
             <div>

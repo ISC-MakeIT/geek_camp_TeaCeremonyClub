@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\ChatroomController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Authenticate;
+use App\Models\Chatroom;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(Authenticate::class)->group(function() {
+Route::middleware(Authenticate::class)->group(function () {
     Route::get('/', [HomeController::class, 'showHome']);
 
-    Route::prefix('/character')->group(function() {
+    Route::prefix('/character')->group(function () {
         Route::post('/', [CharacterController::class, 'createCharacter']);
+    });
+
+    Route::prefix('/chatroom')->group(function () {
+        Route::get('/{characterId}', [ChatroomController::class, 'showToCreateCharacterElementsForm']);
+        Route::post('/{characterId}', [ChatroomController::class, 'showToCreateChatroomForm']);
+        Route::post('/create/{characterId}', [ChatroomController::class, 'createChatroom']);
     });
 });

@@ -104,6 +104,16 @@ class Character extends Model
         return Character::where('creator', $userId)->get();
     }
 
+    public static function findOneByCharacterId(string $characterId): Character
+    {
+        return Character::find($characterId);
+    }
+
+    public static function findOneByCharacterIdAndUserId(string $characterId, int $userId): Character
+    {
+        return Character::where('creator', $userId)->findOrFail($characterId);
+    }
+
     public function getId(): string
     {
         return $this->id;

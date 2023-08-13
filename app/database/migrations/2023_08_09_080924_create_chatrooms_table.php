@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('character_elements');
             $table->foreignId('creator');
 
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
