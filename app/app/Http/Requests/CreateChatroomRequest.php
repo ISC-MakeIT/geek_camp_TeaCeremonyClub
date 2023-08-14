@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateChatroomRequest extends FormRequest
@@ -10,6 +9,7 @@ class CreateChatroomRequest extends FormRequest
     public function rules(): array
     {
         $toValidateForm = [];
+
         $formLabels = session('formLabelsTemporality');
 
         foreach ($formLabels as $formLabel) {
