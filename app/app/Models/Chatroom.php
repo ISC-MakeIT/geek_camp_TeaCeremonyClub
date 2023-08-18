@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Chatroom extends Model
 {
@@ -69,5 +70,25 @@ class Chatroom extends Model
     public static function findAllByUserId(int $userId): Collection
     {
         return Chatroom::where('creator', $userId)->get();
+    }
+
+    public static function findOneByChatroomIdAndUserId(string $chatroomId, int $userId): Chatroom
+    {
+        return Chatroom::where('creator', $userId)->findOrFail($chatroomId);
+    }
+
+    public static function createChat(string $content, string $chatroomId)
+    {
+        DB::transaction(function() use ($content, $chatroomId) {
+            $chatroom = Chatroom::findOneByChatroomIdAndUserId($chatroomId, auth()->id());
+        
+            Chat::createToSend(
+                $chatroom->getId(),
+                $content,
+                $chatroom->getPurpose(),
+                $chatroom->getCharacterElements(),
+            );
+            Chat::createResponse($content, $chatroom->getId());
+        });
     }
 }

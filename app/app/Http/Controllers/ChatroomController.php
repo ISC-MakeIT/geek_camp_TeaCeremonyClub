@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateChatroomRequest;
+use App\Http\Requests\CreateToChatRequest;
+use App\Http\Requests\ShowToChatHistoryRequest;
 use App\Http\Requests\ShowToCreateCharacterElementsFormRequest;
 use App\Http\Requests\ShowToCreateChatroomFormRequest;
 use App\Models\Character;
 use App\Models\Chatroom;
-use Illuminate\Http\Request;
+use App\Models\Chat;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ChatroomController extends Controller
@@ -55,5 +56,24 @@ class ChatroomController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function showToChatHistory(ShowToChatHistoryRequest $request)
+    {
+        $validatedRequest = $request->validated();
+
+        $chatroom = Chatroom::findOneByChatroomIdAndUserId($validatedRequest['chatroomId'], auth()->id());
+        $chats = Chat::findAllByChatroomId($validatedRequest['chatroomId']);
+
+        return view('chatroom', ['chats' => $chats, 'chatroom' => $chatroom]);
+    }
+
+    public function createToChat(CreateToChatRequest $request)
+    {
+        $validatedRequest = $request->validated();
+
+        Chatroom::createChat($validatedRequest['content'], $validatedRequest['chatroomId']);
+        
+        return redirect(url()->current());
     }
 }

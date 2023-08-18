@@ -28,6 +28,7 @@
                 <h1>{{ $chatroom->getId() }}</h1>
                 <p>{{ $chatroom->getPurpose() }}</p>
                 <p>({{ json_encode($chatroom->getCharacterElements(), JSON_UNESCAPED_UNICODE) }})</p>
+                <a href="{{ url("/chatroom/{$chatroom->getId()}/chat") }}">ルームに移動する</a>
             </article>
         @endforeach
     </section>
