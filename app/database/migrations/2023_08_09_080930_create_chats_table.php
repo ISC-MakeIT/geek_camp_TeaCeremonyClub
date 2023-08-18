@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
 
+            $table->uuid('chatroom_id');
             $table->string('role', 255);
             $table->text('content');
             $table->foreignId('creator');
