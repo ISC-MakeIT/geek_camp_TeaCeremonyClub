@@ -1,0 +1,73 @@
+service: english-quiz-api
+
+custom:
+  defaultStage: dev
+  profiles:
+    dev: sls-itg
+    stg: sls-stg
+    prd: sls-prd
+  environments: ${file(./config/config.yml)}
+  apigwBinary:
+    types:
+      - multipart/form-data
+
+provider:
+  name: aws
+  region: ap-northeast-1
+  stage: dev
+  runtime: provided.al2
+  memorySize: 512
+  environment:
+    APP_NAME: Sadobu
+    APP_ENV: production
+    APP_STORAGE: '/tmp'
+    APP_KEY: ${self:custom.environments.APP_KEY}
+    CHAT_GPT_TOKEN: ${self:custom.environments.CHAT_GPT_TOKEN}
+    LOG_LEVEL: ${self:custom.environments.LOG_LEVEL}
+    LOG_CHANNEL: ${self:custom.environments.LOG_CHANNEL}
+    DB_CONNECTION: ${self:custom.environments.DB_CONNECTION}
+    DB_PORT: ${self:custom.environments.DB_PORT}
+    DB_HOST: ${self:custom.environments.DB_HOST}
+    DB_DATABASE: ${self:custom.environments.DB_DATABASE}
+    DB_USERNAME: ${self:custom.environments.DB_USER_NAME}
+    DB_PASSWORD: ${self:custom.environments.DB_PASSWORD}
+    AWS_URL: ${self:custom.environments.AWS_URL}
+    AWS_BUCKET: ${self:custom.environments.AWS_BUCKET}
+    AWS_USE_PATH_STYLE_ENDPOINT: ${self:custom.environments.AWS_USE_PATH_STYLE_ENDPOINT}
+    SESSION_DRIVER: ${self:custom.environments.SESSION_DRIVER}
+    CACHE_DRIVER: ${self:custom.environments.CACHE_DRIVER}
+    QUEUE_CONNECTION: ${self:custom.environments.QUEUE_CONNECTION}
+    QUEUE_DIRVER: ${self:custom.environments.QUEUE_DIRVER}
+    VIEW_COMPILED_PATH: /tmp
+
+package:
+  exclude:
+    - node_modules/**
+    - public/storage
+    - resources/assets/**
+    - storage/**
+    - tests/**
+
+functions:
+  web:
+    handler: public/index.php
+    timeout: 29
+    layers:
+      - ${bref:layer.php-82-fpm}
+      - ${bref-extra:gd-php-82}
+    events:
+      - http: 'ANY /'
+      - http: 'ANY /{proxy+}'
+
+  artisan:
+    handler: artisan
+    timeout: 900
+    memorySize: 256
+    layers:
+      - ${bref:layer.php-82-fpm}
+      - ${bref-extra:gd-php-82}
+      - ${bref:layer.console}
+
+plugins:
+  - ./vendor/bref/bref
+  - ./vendor/bref/extra-php-extensions

@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.loggedInBase')
 
 @section('title', 'キャラクター詳細')
 

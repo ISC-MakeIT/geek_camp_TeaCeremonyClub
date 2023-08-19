@@ -21,6 +21,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/', [HomeController::class, 'showHome']);
 
     Route::prefix('/character')->group(function () {
+        Route::get('/', [CharacterController::class, 'showToCreateCharacterForm']);
         Route::post('/', [CharacterController::class, 'createCharacter']);
     });
 
