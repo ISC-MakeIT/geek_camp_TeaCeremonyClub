@@ -21,7 +21,7 @@ class ChatroomController extends Controller
         $validatedRequest = $request->validated();
         $character = Character::findOneByCharacterIdAndUserId($validatedRequest['characterId'], auth()->id());
 
-        $createdFormLabels = Chatroom::createFormLabels($validatedRequest['purpose']);
+        $createdFormLabels = Chatroom::createFormLabels($character, $validatedRequest['purpose']);
 
         session(['purposeTemporality' => $validatedRequest['purpose']]);
         session(['formLabelsTemporality' => $createdFormLabels]);
@@ -40,7 +40,7 @@ class ChatroomController extends Controller
     public function createChatroom(CreateChatroomRequest $request)
     {
         $validatedRequest = $request->validated();
-        $character = Character::findOneByCharacterIdAndUserId($validatedRequest['characterId'], auth()->id());
+        Character::findOneByCharacterIdAndUserId($validatedRequest['characterId'], auth()->id());
 
         $formLabels = session('formLabelsTemporality');
         $purpose    = session('purposeTemporality');
@@ -73,7 +73,7 @@ class ChatroomController extends Controller
         $validatedRequest = $request->validated();
 
         Chatroom::createChat($validatedRequest['content'], $validatedRequest['chatroomId']);
-        
+
         return redirect(url()->current());
     }
 }
