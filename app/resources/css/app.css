@@ -1,118 +1,89 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ddd;
-}
-
-.main {
-}
-
-ul.alert {
-    margin: 10px;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    padding: 1rem 1rem 1rem 2.5rem;
-    border-radius: 4px;
-    background: #f8d6d9;
-    color: #721c24;
-    box-shadow: 10px 5px 5px #278d54;
-}
-
-.registration {
-    border-radius: 10px;
-    background: white;
-    width: 100%;
-}
-
-.registration_title {
-    margin-top: 50px;
-    font-size: 2em;
-    text-align: center;
-}
-
-.registration_form {
-    display: flex;
-    justify-content: center;
-}
-
-.input_group {
-    margin-bottom: 1.5rem;
-}
-
-.input_group_label {
-    font-size: .8rem;
-}
-
-
-.registration_box {
-    font-size: 1rem;
-    width: 100%;
-    border: none;
-    outline: none;
-    padding-bottom: .5rem;
-    box-sizing: border-box;
-}
-
-.underline {
-    position: relative;
-    border-top: 1px solid #c2c2c2;
-}
-
-.underline::before,
-.underline::after {
-    position: absolute;
-    bottom: 0px;
-    width: 0px;
-    height: 1px;
-    content: '';
-    background-color: #2fb070;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-}
-
-.underline::before {
-    left: 50%;
-}
-
-.underline::after {
-    right: 50%;
-}
-
-#registration_email:focus+.underline::before,
-#registration_email:focus+.underline::after {
-    width: 50%;
-}
-
-#registration_password:focus+.underline::before,
-#registration_password:focus+.underline::after {
-    width: 50%;
+    height: 100vh;
 }
 
 .actions {
+    padding: 20px;
+    background-color: #ddd;
+    width: 100vw;
+    height: 70px;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
-    margin-top: 4rem;
 }
 
-.login_btn,
-.registration_btn {
-    width: 140px;
-    background: #2fb070;
+
+.registration-btn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+    background: #198754;
     border: none;
     color: white;
-    padding: 15px;
-    border-radius: 20px;
+    padding: 18px;
+    border-radius: 50px;
     font-weight: bold;
+    font-size: 13px;
 }
 
-.login_btn:hover,
-.registration_btn:hover {
+.registration-title {
+    margin-top: 50px;
+    font-size: 2em;
+    text-align: left;
+}
+
+.registration-btn:hover {
     cursor: pointer;
-    background: #248b58;
+    background: #13643e;
 }
 
 a {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.registration-btn-icon {
+    margin-right: 13px;
+}
+
+.registration-form {
+    margin: 100px 200px;
+}
+
+.input-label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.registration-box {
+    width: 100%;
+    background-color: #333333;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 10px;
+    color: white;
+}
+
+.registration-box::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #0D6EFD;
+    border: none;
+    border-radius: 50px;
+    height: 46px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.login-btn:hover {
+    background-color: #0c5cd4;
 }
