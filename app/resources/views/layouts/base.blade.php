@@ -17,6 +17,8 @@
     <main class="main">
         @yield('main')
     </main>
+
+    @yield('script')
 </body>
 
 </html>

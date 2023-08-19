@@ -7,6 +7,11 @@ use App\Models\Character;
 
 class CharacterController extends Controller
 {
+    public function showToCreateCharacterForm()
+    {
+        return view('createCharacterForm');
+    }
+
     public function createCharacter(CreateCharacterRequest $request)
     {
         $validatedRequest = $request->validated();
@@ -25,11 +30,5 @@ class CharacterController extends Controller
         );
 
         return redirect('/');
-    }
-
-    public function getCharacterPath(Character $character)
-    {
-        $data = ['character' => $character];
-        return view('character', $data);
     }
 }
