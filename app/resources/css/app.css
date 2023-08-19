@@ -1,10 +1,94 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ddd;
+    height: 100vh;
 }
 
-.main {
+.actions {
+    padding: 20px;
+    background-color: #ddd;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.registration-btn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+    background: #198754;
+    border: none;
+    color: white;
+    padding: 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.registration-title {
+    margin-top: 50px;
+    font-size: 2em;
+    text-align: left;
+}
+
+.registration-btn:hover {
+    cursor: pointer;
+    background: #13643e;
+}
+
+a {
+    text-decoration: none;
+}
+
+.registration-btn-icon {
+    margin-right: 13px;
+}
+
+.registration-form {
+    margin: 100px 200px;
+}
+
+.input-label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.registration-box {
+    width: 100%;
+    background-color: #333333;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 10px;
+    color: white;
+}
+
+.registration-box::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #0D6EFD;
+    border: none;
+    border-radius: 50px;
+    height: 46px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.login-btn:hover {
+    background-color: #0c5cd4;
+}
+
+/* .main {
 }
 
 ul.alert {
@@ -17,21 +101,16 @@ ul.alert {
     background: #f8d6d9;
     color: #721c24;
     box-shadow: 10px 5px 5px #278d54;
-}
+} */
 
-.registration {
+/* .registration {
     border-radius: 10px;
     background: white;
     width: 100%;
-}
+} */
 
-.registration_title {
-    margin-top: 50px;
-    font-size: 2em;
-    text-align: center;
-}
 
-.registration_form {
+/* .registration_form {
     display: flex;
     justify-content: center;
 }
@@ -115,4 +194,4 @@ ul.alert {
 
 a {
     text-decoration: underline;
-}
+} */
