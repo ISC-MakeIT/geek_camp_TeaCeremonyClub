@@ -11,9 +11,13 @@
         <article style="border: 1px solid black;">
             <form style="margin-top: 20px" action="{{ url("/chatroom/create/{$character->getId()}") }}" method="get">
                 @csrf
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                @if ($errors->any())
+                    <ul class="alert error">
+                        @foreach ($errors->all() as $error)
+                            <li class="alert-item"> ・{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
 
                 <label>指定したキャラクター</label>
                 <input type="text" value="{{ $character->getName() }}" disabled>

@@ -10,9 +10,13 @@
     <section>
         <form action="{{ url("/chatroom/create/{$character->getId()}") }}" method="post">
             @csrf
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            @if ($errors->any())
+                <ul class="alert error">
+                    @foreach ($errors->all() as $error)
+                        <li class="alert-item"> ・{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
 
             @foreach ($formLabels as $formLabel)
                 <div>

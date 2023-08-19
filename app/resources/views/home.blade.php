@@ -38,10 +38,13 @@
 
         <form action="{{ url('/character') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            @if ($errors->any())
+                <ul class="alert error">
+                    @foreach ($errors->all() as $error)
+                        <li class="alert-item"> ・{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
 
             <div>
                 <label for="name">名前</label><br>

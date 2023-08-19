@@ -28,13 +28,10 @@
     <section class="inner">
         <form action="{{ route('register') }}" method="post" autocomplete="off">
             @csrf
-
             @if ($errors->any())
-                <ul class="alert">
+                <ul class="alert error">
                     @foreach ($errors->all() as $error)
-                        <div class="alert" role="alert">
-                            <li> {{ $error }}</li>
-                        </div>
+                        <li class="alert-item"> ・{{ $error }}</li>
                     @endforeach
                 </ul>
             @endif

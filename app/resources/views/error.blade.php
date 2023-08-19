@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'ログイン')
+@section('title', 'エラー')
 
 @section('main')
     <h1>エラーが発生しました</h1>
