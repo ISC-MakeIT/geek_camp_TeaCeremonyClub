@@ -127,7 +127,7 @@ a {
     text-align: center;
 }
 
-.empty-img{
+.empty-img {
     width: 30%;
 }
 
@@ -482,4 +482,18 @@ a {
 
 .create-chatroom-submit {
     margin: 2rem 0;
+}
+
+.lets-chat-inner {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.lets-chat-element {
+    display: flex;
+    justify-content: center;
+}
+
+.lets-chat-img {
+    width: 40%;
 }

@@ -76,7 +76,13 @@
                     </form>
                 </section>
             @else
-                <h1>さぁ、チャットを始めよう！</h1>
+                <section class="lets-chat-inner">
+                    <h1>さぁ、チャットを始めよう！</h1>
+                    <div class="lets-chat-element">
+                        <img class="lets-chat-img" src="/images/female-office-worker_happy.png"
+                            alt="female-office-worker-happy">
+                    </div>
+                </section>
             @endif
         </div>
     @endif
