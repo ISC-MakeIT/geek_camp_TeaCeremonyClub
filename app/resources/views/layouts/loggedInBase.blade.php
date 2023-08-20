@@ -3,7 +3,7 @@
 @section('header')
     <div class="header-inner">
         <nav class="header-navigation">
-            <a class="success-btn" href="{{ url('/chatroom') }}">
+            <a class="success-btn" href="{{ url('/chatroom/characterElements') }}">
                 <svg class="success-btn-icon" width="21" height="24" viewBox="0 0 21 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path

@@ -9,7 +9,7 @@
 
     <section>
         <article style="border: 1px solid black;">
-            <form style="margin-top: 20px" action="{{ url("/chatroom/create/{$character->getId()}") }}" method="get">
+            <form style="margin-top: 20px" action="{{ url("/chatroom/create") }}" method="get">
                 @csrf
                 @if ($errors->any())
                     <ul class="alert error">
@@ -19,8 +19,9 @@
                     </ul>
                 @endif
 
-                <label>指定したキャラクター</label>
-                <input type="text" value="{{ $character->getName() }}" disabled>
+                @foreach ($characters as $character)
+                @endforeach
+
                 <label>チャットの目的</label>
                 <input style="width: 30%" type="text" name="purpose" value="{{ old('purpose') }}" placeholder="目的を入力"
                     required>

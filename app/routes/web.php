@@ -26,9 +26,9 @@ Route::middleware(Authenticate::class)->group(function () {
     });
 
     Route::prefix('/chatroom')->group(function () {
-        Route::get('/characterElements/{characterId}', [ChatroomController::class, 'showToCreateCharacterElementsForm']);
-        Route::get('/create/{characterId}', [ChatroomController::class, 'showToCreateChatroomForm']);
-        Route::post('/create/{characterId}', [ChatroomController::class, 'createChatroom']);
+        Route::get('/characterElements', [ChatroomController::class, 'showToCreateCharacterElementsForm']);
+        Route::get('/create', [ChatroomController::class, 'showToCreateChatroomForm']);
+        Route::post('/create', [ChatroomController::class, 'createChatroom']);
 
         Route::get('/{chatroomId}/chat', [ChatroomController::class, 'showToChatHistory']);
         Route::post('/{chatroomId}/chat', [ChatroomController::class, 'createToChat']);

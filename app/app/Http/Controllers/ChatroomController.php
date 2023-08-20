@@ -16,6 +16,13 @@ use Illuminate\Support\Str;
 
 class ChatroomController extends Controller
 {
+    public function showToCreateCharacterElementsForm(): View | Factory
+    {
+        $characters = Character::findAllByUserId(auth()->id());
+
+        return view('createCharacterElementsForm', ['characters' => $characters]);
+    }
+
     public function showToCreateChatroomForm(ShowToCreateChatroomFormRequest $request)
     {
         $validatedRequest = $request->validated();
@@ -27,14 +34,6 @@ class ChatroomController extends Controller
         session(['formLabelsTemporality' => $createdFormLabels]);
 
         return view('createChatroomForm', ['formLabels' => $createdFormLabels, 'character' => $character]);
-    }
-
-    public function showToCreateCharacterElementsForm(ShowToCreateCharacterElementsFormRequest $request): View | Factory
-    {
-        $validatedRequest = $request->validated();
-        $character = Character::findOneByCharacterIdAndUserId($validatedRequest['characterId'], auth()->id());
-
-        return view('createCharacterElementsForm', ['character' => $character]);
     }
 
     public function createChatroom(CreateChatroomRequest $request)
@@ -62,7 +61,9 @@ class ChatroomController extends Controller
     {
         $validatedRequest = $request->validated();
 
+        $chatroom = Chatroom::findOneByChatroomIdAndUserId($validatedRequest['chatroomId'], auth()->id());
         $chats = Chat::findAllByChatroomId($validatedRequest['chatroomId']);
+
         $chatrooms = Chatroom::findAllByUserId(auth()->id());
 
         return view('home', ['chats' => $chats, 'chatroomId' => $validatedRequest['chatroomId'], 'chatrooms' => $chatrooms]);
