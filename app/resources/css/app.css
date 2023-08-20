@@ -307,6 +307,7 @@ a {
     border-radius: 16px;
     background: #333;
     gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .room:hover {
@@ -350,6 +351,7 @@ a {
 .chat-message {
     display: flex;
     column-gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .chat-message.me {
@@ -421,6 +423,12 @@ a {
 .chat-form-submit-button:hover {
     background: #13643e;
     cursor: pointer;
+}
+
+.create-chatroom-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 3rem;
 }
 
 .create-chatroom-input-label {

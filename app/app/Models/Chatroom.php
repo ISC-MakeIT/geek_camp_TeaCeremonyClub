@@ -81,27 +81,42 @@ class Chatroom extends Model
                 [
                     "role"    => "user",
                     "content" => view('chatgpt.prompt.createFormLabels', [
-                        'age' => $character->getAge(),
-                        'sex' => $character->getSexInJa(),
+                        'name' => $character->getName(),
+                        'age'  => $character->getAge(),
+                        'sex'  => $character->getSexInJa(),
                         'purpose' => $purpose,
                         'extraversion' => $character->getExtraversion(),
                         'agreeableness' => $character->getAgreeableness(),
                         'conscientiousness' => $character->getConscientiousness(),
                         'neuroticism' => $character->getNeuroticism(),
                         'openness' => $character->getOpenness(),
-                    ])->render(),
+                    ])->render()
                 ],
             ],
             [
                 [
                     "name"        => "createFormLabels",
-                    "description" => "{対象のことを深く知るため and 目的を叶えるために必要な要素}に必要なラベル一覧。 例:{$character->getName()}の現在の状況",
+                    "description" => <<< EOM
+                        # 命令書:
+                        これは人格の基本要素とルームの作成目的から{$character->getName()}さんの詳細な情報を知るための処理です。
+                        以下の制約条件と例を元に、最高のラベルを生成してください。
+
+                        # 制約条件:
+                        ・ラベルは2つ程度
+                        ・人格が持っている特性以外のことは聞かない
+                        ・ルーム作成の目的と筋の通る特性以外は聞かない
+
+                        # 例:
+                        目的が「{$character->getName()}のプリンを私が食べてしまった」場合
+                        ラベルは「好きな食べ物」となる
+                        解決策に必要な要素を要求してほしい。
+                    EOM,
                     "parameters"  => [
                         "type"         => "object",
                         "properties"   => [
                             "labels"   => [
                                 "type" => "array",
-                                "description" => "フォームのラベルの配列 例:{$character->getName()}の現在の状況",
+                                "description" => "フォームのラベルの配列",
                                 "items"       => [
                                     "type" => "string"
                                 ]

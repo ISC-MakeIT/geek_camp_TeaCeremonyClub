@@ -14,6 +14,7 @@
                 </ul>
             @endif
 
+            <h1 class="create-chatroom-title">{{ $character->getName() }}さんの詳細について入力をしてください</h1>
             @foreach ($formLabels as $formLabel)
                 <div>
                     <label class="create-chatroom-input-label">{{ $formLabel }}</label>
