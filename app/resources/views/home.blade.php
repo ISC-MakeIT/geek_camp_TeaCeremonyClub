@@ -5,7 +5,7 @@
 @section('main')
     @if ($characters->isEmpty())
         <section class="empty-inner">
-            <h2>まだキャラクターがないようです...</h2>
+            <h2 class="empty-text">まだキャラクターがないようです...</h2>
             <img class="empty-img" src="/images/nayami_office-worker.png" alt="nayami-office-worke">
             <div class="empty-btn">
                 <a class="primary-btn" href="{{ url('/character') }}">キャラクターを作る</a>
@@ -13,7 +13,7 @@
         </section>
     @elseif ($chatrooms->isEmpty())
         <section class="empty-inner">
-            <h2>まだルームがないようです...</h2>
+            <h2 class="empty-text">まだルームがないようです...</h2>
             <img class="empty-img" src="/images/nayami_office-worker.png" alt="nayami-office-worke">
             <div class="empty-btn">
                 <a class="primary-btn" href="{{ url('/chatroom/characterElements') }}">ルームを作る</a>
@@ -77,7 +77,7 @@
                 </section>
             @else
                 <section class="lets-chat-inner">
-                    <h1>さぁ、チャットを始めよう！</h1>
+                    <h1 class="lets-chat-text">さぁ、チャットを始めよう！</h1>
                     <div class="lets-chat-element">
                         <img class="lets-chat-img" src="/images/female-office-worker_happy.png"
                             alt="female-office-worker-happy">

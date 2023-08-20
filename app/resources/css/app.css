@@ -5,6 +5,10 @@ body {
     font-size: 16px;
 }
 
+.icon {
+    width: 7rem;
+}
+
 a {
     text-decoration: none;
 }
@@ -122,9 +126,14 @@ a {
     background: #13643e;
 }
 
+
 .empty-inner {
     padding: 3rem;
     text-align: center;
+}
+
+.empty-text {
+    color: #333;
 }
 
 .empty-img {
@@ -487,6 +496,10 @@ a {
 .lets-chat-inner {
     text-align: center;
     font-size: 2rem;
+}
+
+.lets-chat-text {
+    color: #333;
 }
 
 .lets-chat-element {
