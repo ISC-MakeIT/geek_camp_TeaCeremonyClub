@@ -8,7 +8,7 @@
     </section>
 
     <section>
-        <form action="{{ url("/chatroom/create/{$character->getId()}") }}" method="post">
+        <form action="{{ url()->current() }}" method="post">
             @csrf
             @if ($errors->any())
                 <ul class="alert error">
