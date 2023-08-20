@@ -62,10 +62,10 @@ class ChatroomController extends Controller
     {
         $validatedRequest = $request->validated();
 
-        $chatroom = Chatroom::findOneByChatroomIdAndUserId($validatedRequest['chatroomId'], auth()->id());
         $chats = Chat::findAllByChatroomId($validatedRequest['chatroomId']);
+        $chatrooms = Chatroom::findAllByUserId(auth()->id());
 
-        return view('chatroom', ['chats' => $chats, 'chatroom' => $chatroom]);
+        return view('home', ['chats' => $chats, 'chatroomId' => $validatedRequest['chatroomId'], 'chatrooms' => $chatrooms]);
     }
 
     public function createToChat(CreateToChatRequest $request)
