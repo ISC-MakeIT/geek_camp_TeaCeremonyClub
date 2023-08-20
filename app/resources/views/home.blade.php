@@ -22,17 +22,17 @@
     @else
         <div class="inner-main">
             <section class="rooms">
-                @foreach ($chatrooms as $chatroom)
-                    <a href="{{ url("/chatroom/{ $chatroom->getId() }/chat") }}" class="room">
-                        <p class="room-title">{{ $chatroom->getName() }} さんとのチャットルーム</p>
-                        <p class="room-purpose">{{ $chatroom->getPurpoes() }}</p>
+                @foreach ($chatrooms as $chatroomOfList)
+                    <a href="{{ url("/chatroom/{$chatroomOfList->getId()}/chat") }}" class="room">
+                        <p class="room-title">{{ $chatroomOfList->character->getName() }} さんとのチャットルーム</p>
+                        <p class="room-purpose">{{ $chatroomOfList->getPurpose() }}</p>
                     </a>
                 @endforeach
             </section>
 
             <div class="hr"></div>
 
-            @if (isset($chatroomId))
+            @if (isset($chatroom))
                 <section class="chat-container">
                     <ul class="chat-messages">
                         @foreach ($chats as $chat)
@@ -42,20 +42,22 @@
 
                             @if ($chat->getRole() == 'user')
                                 <li class="chat-message me">
-                                    <img class="chat-message-icon me" src="user1.jpg">
-                                    <p class="chat-message-text me">text text text</p>
+                                    <img class="chat-message-icon me" src="/user.png">
+                                    <p class="chat-message-text me">{{ $chat->getContent() }}</p>
                                 </li>
                             @else
                                 <li class="chat-message others">
-                                    <img class="chat-message-icon others" src="user2.jpg">
-                                    <p class="chat-message-text others">text text text</p>
+                                    <img class="chat-message-icon others" src="{{ $chatroom->character->getIcon() }}">
+                                    <p class="chat-message-text others">{{ $chat->getContent() }}</p>
                                 </li>
                             @endif
                         @endforeach
                     </ul>
 
-                    <form action="{{ url()->current() }}" method="post" class="chat-form" autocomplete="off">
-                        <textarea class="chat-form-textarea" name="text" rows="3" cols="40" placeholder="チャットを入力してください"></textarea>
+                    <form action="{{ url()->current() }}" method="post" class="chat-form">
+                        @csrf
+
+                        <textarea class="chat-form-textarea" rows="3" cols="40" placeholder="チャットを入力してください" name="content"></textarea>
                         <button class="chat-form-submit-button">
                             <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

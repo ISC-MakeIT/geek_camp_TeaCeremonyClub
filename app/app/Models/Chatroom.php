@@ -63,6 +63,11 @@ class Chatroom extends Model
         return new CarbonImmutable($this->updated_at);
     }
 
+    public function character()
+    {
+        return $this->hasOne(Character::class, 'id', 'character_id');
+    }
+
     public static function createFormLabels(Character $character, string $purpose): array
     {
         $chatGPT = new ChatGPT(new Client());
@@ -113,7 +118,7 @@ class Chatroom extends Model
 
     public static function findAllByUserId(int $userId): Collection
     {
-        return Chatroom::where('creator', $userId)->get();
+        return Chatroom::with(['character'])->where('creator', $userId)->get();
     }
 
     public static function findOneByChatroomIdAndUserId(string $chatroomId, int $userId): Chatroom

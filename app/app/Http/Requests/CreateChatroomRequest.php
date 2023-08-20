@@ -20,12 +20,4 @@ class CreateChatroomRequest extends FormRequest
             'characterId' => ['required', 'string', 'uuid', 'exists:characters,id'],
         ], $toValidateForm);
     }
-
-    public function all($keys = null): array
-    {
-        $requestData = parent::all();
-        $requestData['characterId'] = $this->route('characterId');
-
-        return $requestData;
-    }
 }

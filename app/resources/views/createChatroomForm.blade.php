@@ -3,12 +3,8 @@
 @section('title', 'チャットルーム作成')
 
 @section('main')
-    <section>
-        <a onClick="history.back();"><button>トップに戻る</button></a>
-    </section>
-
-    <section>
-        <form action="{{ url()->current() }}" method="post" autocomplete="off">
+    <section class="inner">
+        <form action="{{ url()->current() }}" method="post">
             @csrf
             @if ($errors->any())
                 <ul class="alert error">
@@ -20,11 +16,14 @@
 
             @foreach ($formLabels as $formLabel)
                 <div>
-                    <label>{{ $formLabel }}</label>
-                    <input type="text" name="{{ $formLabel }}" value="{{ old("$formLabel") }}">
+                    <label class="create-chatroom-input-label">{{ $formLabel }}</label>
+                    <textarea class="create-chatroom-input" rows="6" name="{{ $formLabel }}" value="{{ old("$formLabel") }}" placeholder="入力してください" required></textarea>
                 </div>
             @endforeach
-            <input type="submit" value="送信">
+
+            <input type="text" name="characterId" value="{{ $character->getId() }}" hidden>
+
+            <button class="primary-btn create-chatroom-submit" type="submit">次へ進む</button>
         </form>
     </section>
 @endsection

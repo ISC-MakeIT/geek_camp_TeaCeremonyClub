@@ -13,12 +13,4 @@ class ShowToCreateChatroomFormRequest extends FormRequest
             'purpose' => ['required', 'string', 'between:10,255']
         ];
     }
-
-    public function all($keys = null): array
-    {
-        $requestData = parent::all();
-        $requestData['characterId'] = $this->route('characterId');
-
-        return $requestData;
-    }
 }

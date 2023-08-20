@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateChatroomRequest;
 use App\Http\Requests\CreateToChatRequest;
 use App\Http\Requests\ShowToChatHistoryRequest;
-use App\Http\Requests\ShowToCreateCharacterElementsFormRequest;
 use App\Http\Requests\ShowToCreateChatroomFormRequest;
 use App\Models\Character;
 use App\Models\Chatroom;
@@ -63,10 +62,11 @@ class ChatroomController extends Controller
 
         $chatroom = Chatroom::findOneByChatroomIdAndUserId($validatedRequest['chatroomId'], auth()->id());
         $chats = Chat::findAllByChatroomId($validatedRequest['chatroomId']);
+        $characters = Character::findAllByUserId(auth()->id());
 
         $chatrooms = Chatroom::findAllByUserId(auth()->id());
 
-        return view('home', ['chats' => $chats, 'chatroomId' => $validatedRequest['chatroomId'], 'chatrooms' => $chatrooms]);
+        return view('home', ['chats' => $chats, 'characters' => $characters, 'chatroom' => $chatroom, 'chatrooms' => $chatrooms]);
     }
 
     public function createToChat(CreateToChatRequest $request)
