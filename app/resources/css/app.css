@@ -122,6 +122,20 @@ a {
     background: #13643e;
 }
 
+.empty-inner {
+    padding: 3rem;
+    text-align: center;
+}
+
+.empty-img{
+    width: 30%;
+}
+
+.empty-btn {
+    display: flex;
+    justify-content: center;
+}
+
 .primary-btn {
     width: 100%;
     background-color: #0D6EFD;
@@ -267,10 +281,10 @@ a {
 }
 
 .inner-main {
-  display: grid;
-  grid-template-columns: 25% 8px calc(75% - 32px);
-  column-gap: 8px;
-  padding: 2rem;
+    display: grid;
+    grid-template-columns: 25% 8px calc(75% - 32px);
+    column-gap: 8px;
+    padding: 2rem;
 }
 
 .rooms {
@@ -365,7 +379,7 @@ a {
     position: sticky;
     bottom: 0;
     right: 0;
-    background-color:#fff;
+    background-color: #fff;
     grid-template-columns: 85% 15%;
 }
 
