@@ -14,7 +14,7 @@
             </ul>
         @endif
 
-        <form class="create-character-form" action="{{ url()->current() }}" method="post" enctype="multipart/form-data">
+        <form class="create-character-form" action="{{ url()->current() }}" method="post" enctype="multipart/form-data" autocomplete="off">
             @csrf
 
             <div class="inner-create-character-form">
