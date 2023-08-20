@@ -34,7 +34,7 @@
 
             @if (isset($chatroom))
                 <section class="chat-container">
-                    <ul class="chat-messages">
+                    <ul class="chat-messages" id="chat-messages">
                         @foreach ($chats as $chat)
                             @if ($chat->getRole() == 'system')
                                 @continue
@@ -97,13 +97,13 @@
 @endsection
 
 @section('script')
-	<script>
-		const chatFormSubmitButton = document.querySelector('.chat-form-submit-button');
-		const chatForm = document.querySelector('.chat-form');
+    <script>
+        const chatFormSubmitButton = document.querySelector('.chat-form-submit-button');
+        const chatForm = document.querySelector('.chat-form');
 
-		chatFormSubmitButton.addEventListener('click', () => {
-			chatFormSubmitButton.disabled = true;
+        chatFormSubmitButton.addEventListener('click', () => {
+            chatFormSubmitButton.disabled = true;
             chatForm.submit();
-		})
-	</script>
+        })
+    </script>
 @endsection
