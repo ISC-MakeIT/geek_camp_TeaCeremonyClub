@@ -74,6 +74,14 @@
                             </svg>
                         </button>
                     </form>
+
+                    <form action="{{ url()->current() }}" method="post">
+                        @csrf
+
+                        <input type="text" name="content" value="以上のチャットからフィードバックをお願いします。" hidden/>
+
+                        <input type="submit" class="primary-btn" value="終わる">
+                    </form>
                 </section>
             @else
                 <section class="lets-chat-inner">
@@ -86,4 +94,16 @@
             @endif
         </div>
     @endif
+@endsection
+
+@section('script')
+	<script>
+		const chatFormSubmitButton = document.querySelector('.chat-form-submit-button');
+		const chatForm = document.querySelector('.chat-form');
+
+		chatFormSubmitButton.addEventListener('click', () => {
+			chatFormSubmitButton.disabled = true;
+            chatForm.submit();
+		})
+	</script>
 @endsection

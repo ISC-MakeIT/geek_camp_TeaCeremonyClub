@@ -344,7 +344,7 @@ a {
 }
 
 .chat-messages {
-    height: calc(100vh - 13rem - 10rem);
+    height: calc(100vh - 13rem - 16rem);
     overflow-y: auto;
 }
 
