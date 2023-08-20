@@ -9,7 +9,7 @@
 
     <section>
         <article style="border: 1px solid black;">
-            <form style="margin-top: 20px" action="{{ url("/chatroom/create") }}" method="get">
+            <form style="margin-top: 20px" action="{{ url("/chatroom/create") }}" method="get" autocomplete="off">
                 @csrf
                 @if ($errors->any())
                     <ul class="alert error">

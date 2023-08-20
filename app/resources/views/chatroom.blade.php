@@ -15,7 +15,7 @@
     </section>
 
     <section>
-        <form action="{{ url()->current() }}" method="post">
+        <form action="{{ url()->current() }}" method="post" autocomplete="off">
             @if ($errors->any())
                 <ul class="alert error">
                     @foreach ($errors->all() as $error)

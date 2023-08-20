@@ -8,7 +8,7 @@
     </section>
 
     <section>
-        <form action="{{ url()->current() }}" method="post">
+        <form action="{{ url()->current() }}" method="post" autocomplete="off">
             @csrf
             @if ($errors->any())
                 <ul class="alert error">
