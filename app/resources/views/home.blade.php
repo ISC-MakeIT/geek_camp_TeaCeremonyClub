@@ -78,7 +78,7 @@
                     <form action="{{ url()->current() }}" method="post">
                         @csrf
 
-                        <input type="text" name="content" value="以上のチャットからフィードバックをお願いします。" hidden/>
+                        <input type="text" name="content" value="以上のチャットから私のチャット(user)がこのチャットルームの目的を果たせていたかフィードバックをお願いします。" hidden/>
 
                         <input type="submit" class="primary-btn" value="終わる">
                     </form>

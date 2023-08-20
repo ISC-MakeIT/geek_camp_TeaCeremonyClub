@@ -24,7 +24,7 @@ class ChatGPT
                     'Authorization' => 'Bearer ' . config('chatgpt.token'),
                 ],
                 'json'    => array_merge([
-                    'model'       => 'gpt-3.5-turbo-0613',
+                    'model'       => 'gpt-4-0613',
                     'messages'    => $messages,
                     'temperature' => 0.7,
                     'max_tokens'  => 2048,

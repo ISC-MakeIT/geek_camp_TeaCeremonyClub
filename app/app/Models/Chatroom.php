@@ -128,7 +128,10 @@ class Chatroom extends Model
             ]
         );
 
-        return json_decode($responseMessage['message']["function_call"]["arguments"], true, 512, JSON_THROW_ON_ERROR)['labels'];
+        $labels = json_decode($responseMessage['message']["function_call"]["arguments"], true, 512, JSON_THROW_ON_ERROR)['labels'];
+
+        $labels[] = "その他{$character->getName()}の性格";
+        return $labels;
     }
 
     public static function findAllByUserId(int $userId): Collection
