@@ -34,7 +34,7 @@
 
             @if (isset($chatroom))
                 <section class="chat-container">
-                    <ul class="chat-messages">
+                    <ul class="chat-messages" id="chat-messages">
                         @foreach ($chats as $chat)
                             @if ($chat->getRole() == 'system')
                                 @continue
@@ -78,7 +78,7 @@
                     <form action="{{ url()->current() }}" method="post">
                         @csrf
 
-                        <input type="text" name="content" value="以上のチャットからフィードバックをお願いします。" hidden/>
+                        <input type="text" name="content" value="以上のチャットからフィードバックをお願いします。" hidden />
 
                         <input type="submit" class="primary-btn" value="終わる">
                     </form>
@@ -97,13 +97,13 @@
 @endsection
 
 @section('script')
-	<script>
-		const chatFormSubmitButton = document.querySelector('.chat-form-submit-button');
-		const chatForm = document.querySelector('.chat-form');
+    <script>
+        const chatFormSubmitButton = document.querySelector('.chat-form-submit-button');
+        const chatForm = document.querySelector('.chat-form');
 
-		chatFormSubmitButton.addEventListener('click', () => {
-			chatFormSubmitButton.disabled = true;
+        chatFormSubmitButton.addEventListener('click', () => {
+            chatFormSubmitButton.disabled = true;
             chatForm.submit();
-		})
-	</script>
+        })
+    </script>
 @endsection
